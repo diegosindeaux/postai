@@ -23,6 +23,11 @@ Route::post('/contato', 'ContatoController@salvar')->name('site.contato');
 // routes/web.php
 Route::post('/chatbot/send-message', 'ChatbotController@sendMessage')->name('chatbot.sendMessage');
 
+// Rotas de reset de senha
+Route::get('/password/reset', 'PasswordResetController@showResetForm')->name('password.reset');
+Route::post('/password/send', 'PasswordResetController@sendResetLink')->name('password.send');
+Route::get('/password/reset/{token}', 'PasswordResetController@showResetPasswordForm')->name('password.reset.token');
+Route::post('/password/update', 'PasswordResetController@resetPassword')->name('password.update');
 
 // Rotas protegidas (requerem autenticação)
 Route::prefix('app')->group(function () {

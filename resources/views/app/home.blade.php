@@ -5,10 +5,11 @@
 @section('conteudo')
     <div class="portal-noticia">
         <div class="portal-header">
-            <h3>Últimas Notícias</h3>
+            <h3>Bem-vindo ao Sistema Estante</h3>
         </div>
         <div class="portal-body">
-            <img src="/img/noticia.png" alt="noticia sobre alta de juros">
+            <p>Onde sua empresa fica e se organiza.</p>
+            <p>Gerencie seus produtos, clientes, pedidos e fornecedores de forma simples e eficiente.</p>
         </div>
     </div>
 @endsection()    

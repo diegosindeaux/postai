@@ -18,7 +18,7 @@
 
       <div id="chatbot-container">
           <div id="chatbot-header">
-            <h3>PlanejAI</h3>
+            <h3>Ajudante</h3>
             <i class="fa-solid fa-x close-chat" id="close-chat"></i>
           </div>
           <div id="chat-body">

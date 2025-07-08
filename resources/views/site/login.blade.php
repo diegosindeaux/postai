@@ -10,6 +10,18 @@
 
         <div class="informacao-pagina">
             <div class="form-login"style="width: 30%; margin-left:auto; margin-right:auto;">
+                @if(session('success'))
+                    <div style="color: green; margin-bottom: 10px;">
+                        {{ session('success') }}
+                    </div>
+                @endif
+
+                @if(session('error'))
+                    <div style="color: red; margin-bottom: 10px;">
+                        {{ session('error') }}
+                    </div>
+                @endif
+
               <form action="{{ route('login') }}" method="POST">
                 @csrf
                 <input type="email" value="{{ old('email') }}" name="email" placeholder="Email" class="borda-preta">
@@ -17,6 +29,7 @@
                 <input type="password" name="senha" placeholder="Senha" class="borda-preta">
                 {{ $errors->has('senha') ? $errors->first('senha') :  ''  }}
                 <a class="link-padrao" href="{{ route('usuario.create') }}">Criar conta</a>
+                <a class="link-padrao" href="{{ route('password.reset') }}">Esqueci minha senha</a>
                 <button type="submit" class="borda-preta">Acessar</button>
               </form>
               {{ isset($erro) && $erro != '' ? $erro : '' }}
@@ -33,9 +46,7 @@
         </div>
         <div class="area-contato">
             <h2>Contato</h2>
-            <span>(85) 9 9412-2172</span>
-            <br>
-            <span>contato@planeja.com.br</span>
+            <span>suporte@estante.com</span>
         </div>
         <div class="localizacao">
             <h2>Localização</h2>
