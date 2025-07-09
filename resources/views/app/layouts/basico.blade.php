@@ -29,6 +29,9 @@
           </div>
       </div>
   @yield('conteudo')
+  @auth
+    @include('site.layouts._components.chatbot-widget')
+  @endauth
   <script src="{{ asset('js/chatbot.js') }}"></script>
 </body>
 

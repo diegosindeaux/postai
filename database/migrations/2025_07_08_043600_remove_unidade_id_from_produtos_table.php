@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class FkProdutosFornecedores extends Migration
+class RemoveUnidadeIdFromProdutosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class FkProdutosFornecedores extends Migration
      */
     public function up()
     {
-        //
         Schema::table('produtos', function (Blueprint $table) {
-            $table->unsignedBigInteger('fornecedor_id')->after('id');
-            $table->foreign('fornecedor_id')->references('id')->on('fornecedores');
+            $table->dropForeign(['unidade_id']);
+            $table->dropColumn('unidade_id');
         });
     }
 
@@ -27,10 +26,9 @@ class FkProdutosFornecedores extends Migration
      */
     public function down()
     {
-        //
         Schema::table('produtos', function (Blueprint $table) {
-            $table->dropForeign('produtos_fornecedor_id_foreign');
-            $table->dropColumn('fornecedor_id');
+            $table->unsignedBigInteger('unidade_id')->nullable();
+            $table->foreign('unidade_id')->references('id')->on('unidades');
         });
     }
-}
+} 

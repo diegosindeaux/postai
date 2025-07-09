@@ -15,7 +15,16 @@ class ChatGPTStrategy implements ChatStrategy
 
     public function reply(string $message): string
     {
-        $response = $this->chatService->sendMessage($message);
-        return $response['choices'][0]['message']['content'] ?? 'No response';
+        try {
+            $response = $this->chatService->sendMessage($message);
+            
+            if ($response['success']) {
+                return $response['response'];
+            } else {
+                return 'Desculpe, não consegui processar sua mensagem no momento.';
+            }
+        } catch (\Exception $e) {
+            return 'Desculpe, ocorreu um erro ao processar sua mensagem: ' . $e->getMessage();
+        }
     }
 }

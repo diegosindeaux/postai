@@ -6,6 +6,9 @@
     <div class="menu">
         <ul>
             <li><a href="{{ route('site.index') }}">Principal</a></li>
+            @auth
+                <li><a href="{{ route('site.chatbot') }}">🤖 Chatbot</a></li>
+            @endauth
             @guest
                 <li><a href="{{ route('login') }}">Login</a></li>
             @else

@@ -20,8 +20,13 @@ Route::get('/', 'PrincipalController@principal')->name('site.index');
 Route::get('/sobre', 'SobreController@sobre')->name('site.sobre');
 Route::get('/contato', 'ContatoController@contato')->name('site.contato');
 Route::post('/contato', 'ContatoController@salvar')->name('site.contato');
-// routes/web.php
-Route::post('/chatbot/send-message', 'ChatbotController@sendMessage')->name('chatbot.sendMessage');
+
+// Rotas do Chatbot (apenas autenticado)
+Route::middleware(['auth'])->group(function () {
+    Route::get('/chatbot', 'ChatbotController@index')->name('site.chatbot');
+    Route::post('/chatbot/send-message', 'ChatbotController@sendMessage')->name('chatbot.sendMessage');
+    Route::get('/chatbot/status', 'ChatbotController@checkStatus')->name('chatbot.status');
+});
 
 // Rotas de reset de senha
 Route::get('/password/reset', 'PasswordResetController@showResetForm')->name('password.reset');

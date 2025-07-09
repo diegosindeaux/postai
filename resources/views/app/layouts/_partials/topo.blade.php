@@ -10,6 +10,9 @@
             <li><a href="{{ route('pedido.index') }}">Pedido</a></li>
             <li><a href="{{ route('app.fornecedor') }}">Fornecedor</a></li>
             <li><a href="{{ route('produto.index') }}">Produto</a></li>
+            @auth
+                <li><a href="{{ route('site.chatbot') }}">🤖 Chatbot</a></li>
+            @endauth
             <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
              document.getElementById('logout-form').submit();">
                 Logout
